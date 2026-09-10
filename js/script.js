@@ -22,9 +22,9 @@ const expertise = [
 const tools = [
   { icon: 'fa-paper-plane', label: 'Postman', sub: 'API validation & endpoints' },
   { icon: 'fa-database', label: 'SQL', sub: 'Queries & data verification' },
-  { icon: 'fa-ticket', label: 'Jira', sub: 'Bug tracking & tickets' },
-  { icon: 'fa-robot', label: 'Selenium', sub: 'Basic automation exposure' },
-  { icon: 'fa-play', label: 'Playwright', sub: 'Foundational automation skills' },
+  { icon: 'fa-ticket', label: 'Redmine', sub: 'Bug tracking & tickets' },
+  { icon: 'fa-code', label: 'VS Code Debugger', sub: 'Root-cause analysis' },
+  { icon: 'fa-wand-magic-sparkles', label: 'AI QA Tools', sub: 'Cursor, Claude & Codex' },
   { icon: 'fa-code-branch', label: 'Git', sub: 'Version control basics' },
   { icon: 'fa-chrome', label: 'Chrome DevTools', sub: 'Network, console, elements' },
 ];
@@ -42,70 +42,67 @@ const posModules = [
 ];
 
 const processSteps = [
-  'Requirement Analysis', 'Test Planning', 'Test Case Creation', 'Test Execution', 'Bug Reporting', 'Bug Verification', 'Regression Testing', 'Final Validation'
+  { title: 'Understand', desc: 'Review requirements, flows and acceptance criteria.', icon: 'fa-magnifying-glass' },
+  { title: 'Plan', desc: 'Define scope, risk areas and practical test scenarios.', icon: 'fa-compass' },
+  { title: 'Design', desc: 'Create clear test cases with expected outcomes.', icon: 'fa-file-circle-check' },
+  { title: 'Execute', desc: 'Validate functionality across supported platforms.', icon: 'fa-play' },
+  { title: 'Report', desc: 'Log reproducible defects with useful evidence.', icon: 'fa-bug' },
+  { title: 'Verify', desc: 'Confirm fixes and protect the release with regression testing.', icon: 'fa-shield-halved' },
 ];
 
 const projects = [
   {
-    title: 'Restaurant POS — Demo Project',
-    desc: 'Sample restaurant POS testing project. Tested order entry, kitchen display, receipt printing, payments, inventory updates and offline recovery.',
-    resp: 'Manual testing, regression, UI checks, payment flow, printer validation, offline mode.',
-    types: 'Functional, UI/UX, Regression, POS',
-    tools: 'Postman, SQL, Jira, Chrome DevTools',
-    modules: 'Orders, Kitchen, Payments, Reports, Printers',
-    note: 'Sample / demo project for portfolio.',
+    title: 'Software Test Engineer (QA) — Arkhitech',
+    desc: 'End-to-end manual QA for Foodnerd and Howmuch POS systems and Fruitfull, a team-management web app.',
+    resp: 'Feature validation, bug reproduction, triage, regression, UAT and cross-platform testing.',
+    types: 'Functional, Regression, Smoke, Sanity, Exploratory, UAT, E2E',
+    tools: 'Postman, Redmine, Chrome DevTools, VS Code Debugger',
+    modules: 'POS, Electron desktop, native mobile and web platforms',
+    note: 'Software Test Engineer (QA), Arkhitech, Lahore · Sep 2025–Present',
   },
   {
-    title: 'Retail POS — Demo Project',
-    desc: 'Sample retail POS project. Tested stock updates, barcode scanning, discounts, supplier records, reports and cross-browser consistency.',
-    resp: 'Functional testing, database checks, cross-platform and regression.',
-    types: 'Functional, Database, Cross-Platform, Regression',
-    tools: 'Postman, SQL, Git, Chrome DevTools',
-    modules: 'Inventory, Orders, Payments, Reports, Suppliers',
-    note: 'Sample / demo project for portfolio.',
+    title: 'Software Engineer — ASP.NET Core Developer',
+    desc: 'Developed and maintained web applications using ASP.NET Core, MVC and SQL.',
+    resp: 'Backend feature development, debugging, code review and application reliability.',
+    types: 'ASP.NET Core, MVC, SQL, Web Development',
+    tools: 'C#, JavaScript, SQL, Git',
+    modules: 'Web applications and backend features',
+    note: 'Software Engineer — ASP.NET Core Developer, SirizApps, Lahore · Jan 2024–Jul 2025',
   },
   {
-    title: 'Web App — Order Portal Demo',
-    desc: 'Sample web order portal project. Tested login/session, form validation, API responses, responsive layout and accessibility.',
-    resp: 'Manual, API, UI/UX, regression, cross-browser.',
-    types: 'Functional, API, UI/UX, Cross-Browser',
-    tools: 'Postman, Jira, Chrome DevTools',
-    modules: 'Login, Orders, Profile, Dashboard',
-    note: 'Sample / demo project for portfolio.',
+    title: 'Web Developer — Perfect Solution',
+    desc: 'Developed full-stack web features and helped test and validate new functionality before release.',
+    resp: 'Feature development, validation and early QA workflow support.',
+    types: 'Full-Stack Web Development, Functional Validation',
+    tools: 'C#, JavaScript, HTML, Bootstrap',
+    modules: 'Web application features',
+    note: 'Web Developer, Perfect Solution, Islamabad · Jun 2023–Dec 2023',
   },
 ];
 
 const bugs = [
   {
-    id: 'BUG-001', title: 'Payment transaction failure', severity: 'Critical', priority: 'High', env: 'Windows / Chrome',
-    steps: '1. Add item \n2. Choose card payment \n3. Confirm', expected: 'Payment completes with receipt.', actual: 'Transaction fails with error message.', status: 'Fixed',
+    id: 'QA-001', title: 'Defect reporting & tracking', severity: 'Core Skill', priority: 'High', env: 'Redmine',
+    steps: '1. Reproduce issue \n2. Document clear steps \n3. Attach evidence \n4. Prioritize and track', expected: 'Developers can reproduce and resolve the defect.', actual: 'Clear, actionable QA reporting workflow.', status: 'Professional Practice',
   },
   {
-    id: 'BUG-002', title: 'Inventory quantity mismatch', severity: 'High', priority: 'Medium', env: 'macOS / Safari',
-    steps: '1. Deduct 5 items \n2. Refresh stock', expected: 'Stock decreases by 5.', actual: 'Stock unchanged until refresh.', status: 'Open',
+    id: 'QA-002', title: 'API validation & debugging', severity: 'Core Skill', priority: 'High', env: 'Postman / Chrome DevTools / VS Code',
+    steps: '1. Validate endpoint \n2. Inspect response \n3. Investigate issue \n4. Escalate evidence', expected: 'Reliable API behavior and root-cause context.', actual: 'API testing and issue isolation before escalation.', status: 'Professional Practice',
   },
   {
-    id: 'BUG-003', title: 'Printer not generating receipt', severity: 'Medium', priority: 'Medium', env: 'Windows / Edge',
-    steps: '1. Complete order \n2. Click print', expected: 'Receipt prints.', actual: 'No output; printer shows offline.', status: 'In Progress',
-  },
-  {
-    id: 'BUG-004', title: 'Online order not appearing on POS', severity: 'High', priority: 'High', env: 'iOS / Chrome',
-    steps: '1. Place order online \n2. Open POS', expected: 'Order visible.', actual: 'Missing in order list.', status: 'Fixed',
-  },
-  {
-    id: 'BUG-005', title: 'Login session expires early', severity: 'Medium', priority: 'Low', env: 'Android / Firefox',
-    steps: '1. Log in \n2. Wait 15 min', expected: 'Session active.', actual: 'Redirected to login.', status: 'Open',
+    id: 'QA-003', title: 'Cross-platform coverage', severity: 'Core Skill', priority: 'High', env: 'Windows / macOS / Android / iOS',
+    steps: '1. Execute test scenarios \n2. Compare platform behavior \n3. Report compatibility issues', expected: 'Consistent behavior across supported platforms.', actual: 'Cross-OS, mobile and browser testing coverage.', status: 'Professional Practice',
   },
 ];
 
 const skills = [
-  { name: 'Manual Testing', pct: 95 },
-  { name: 'POS Testing', pct: 95 },
-  { name: 'Functional Testing', pct: 90 },
-  { name: 'Regression Testing', pct: 90 },
-  { name: 'API Testing', pct: 75 },
-  { name: 'SQL / Database Testing', pct: 70 },
-  { name: 'Automation Testing', pct: 50 },
+  { name: 'Manual & Functional Testing', pct: 95 },
+  { name: 'Regression, Smoke & Sanity Testing', pct: 90 },
+  { name: 'Exploratory, UAT & E2E Testing', pct: 90 },
+  { name: 'Cross-Browser & Cross-Platform Testing', pct: 90 },
+  { name: 'API Testing & Debugging', pct: 80 },
+  { name: 'Bug Reporting & Test Case Design', pct: 90 },
+  { name: 'ASP.NET Core Development', pct: 75 },
 ];
 
 const whyPoints = [
@@ -124,20 +121,17 @@ function buildGrid(id, items, builder) {
   el.innerHTML = items.map(builder).join('');
 }
 
-buildGrid('expertGrid', expertise.slice(0,5), (e, i) => {
-  const cardClass = i === 4 ? 'col-12' : 'col-12 col-md-6';
-  const detailsButton = i === 4
-    ? '<div class="mt-3"><a href="expertise.html" class="btn btn-outline-light btn-sm rounded-pill px-4">View Full Details</a></div>'
-    : '';
-  return `<div class="${cardClass} card-expertise reveal-up" style="animation-delay:${i*60}ms">
-    <div class="d-flex align-items-center gap-3 mb-3"><div class="icon-box"><i class="fa-solid ${e.icon}"></i></div><h3 class="h5 fw-bold m-0" style="font-family:var(--font-display)">${e.title}</h3></div>
-    <p class="mb-0 text-white-75 small leading-relaxed">${e.desc}</p>
-    ${detailsButton}
+buildGrid('expertGrid', expertise.slice(0,6), (e, i) => {
+  return `<div class="col-12 col-md-6 col-lg-4 reveal-up" style="animation-delay:${i*60}ms">
+    <article class="card expertise-card h-100 border-0">
+      <div class="card-body p-4"><div class="expertise-card-top"><div class="expertise-card-icon"><i class="fa-solid ${e.icon}"></i></div><span>0${i + 1}</span></div>
+      <h3 class="h5 fw-bold mb-2">${e.title}</h3><p class="mb-0 text-white-75 small">${e.desc}</p></div>
+    </article>
   </div>`;
 });
 
-buildGrid('toolGrid', tools, (t) => `
-<div class="col-6 col-md-3"><div class="tool-card"><i class="fa-solid ${t.icon} fa-xl text-gradient mb-2"></i><h5 class="h6 fw-bold">${t.label}</h5><small class="text-white-75">${t.sub}</small></div></div>`);
+buildGrid('toolGrid', tools, (t, i) => `
+<div class="col-6 col-md-4 col-lg-3"><div class="tool-card tool-card-${i}"><div class="tool-icon"><i class="fa-solid ${t.icon}"></i></div><h5 class="h6 fw-bold mb-1">${t.label}</h5><small class="text-white-75">${t.sub}</small></div></div>`);
 
 buildGrid('posGrid', posModules, (p, i) => `
 <div class="col-6 col-md-4 col-lg-3 reveal-up" style="animation-delay:${i*60}ms"><div class="pos-card"><i class="fa-solid ${p.icon} fa-2x text-gradient mb-2"></i><h5 class="h6 fw-bold">${p.title}</h5><p class="small text-white-75 mb-0">${p.desc}</p></div></div>`);
@@ -148,8 +142,8 @@ function buildProcess() {
   if (!el) return;
   el.innerHTML = processSteps.map((s, i) => `
     <div class="process-step reveal-up" style="animation-delay:${i*100}ms">
-      <div class="step-num">${i+1}</div>
-      <h4 class="h6 fw-bold">${s}</h4>
+      <span class="step-num">0${i+1}</span><div class="process-icon"><i class="fa-solid ${s.icon}"></i></div>
+      <h4 class="h6 fw-bold mb-2">${s.title}</h4><p class="small text-white-75 mb-0">${s.desc}</p>
     </div>`).join('');
 }
 buildProcess();
@@ -159,38 +153,27 @@ buildGrid('projectGrid', projects, (pr, i) => `
 <div class="col-md-6 col-lg-4 reveal-up" style="animation-delay:${i*100}ms">
   <article class="project-card h-100 d-flex flex-column">
     <div class="card-body d-flex flex-column flex-grow-1">
-      <h3 class="fw-bold mb-2">${pr.title}</h3>
-      <p class="small text-white-75 mb-2">${pr.desc}</p>
-      <div class="mb-2"><strong class="small">Testing:</strong> <span class="small text-white-75">${pr.resp}</span></div>
-      <div class="mb-2"><strong class="small">Types:</strong> <span class="small text-white-75">${pr.types}</span></div>
-      <div class="mb-2"><strong class="small">Tools:</strong> <span class="small text-white-75">${pr.tools}</span></div>
-      <div class="mb-3"><strong class="small">Modules:</strong> <span class="small text-white-75">${pr.modules}</span></div>
-      <p class="small text-white-50 mb-2"><em>${pr.note}</em></p>
-      <a href="#" class="btn btn-outline-light btn-sm rounded-pill mt-auto" onclick="alert('Project details coming soon.')">View Details</a>
+      <div class="experience-top"><span class="experience-number">0${i + 1}</span><span class="experience-date">${pr.note}</span></div>
+      <h3 class="fw-bold mb-2">${pr.title}</h3><p class="small text-white-75 mb-3">${pr.desc}</p>
+      <div class="experience-detail"><i class="fa-solid fa-circle-check"></i><span>${pr.resp}</span></div>
+      <div class="experience-tags"><span>${pr.types}</span><span>${pr.tools}</span><span>${pr.modules}</span></div>
     </div>
   </article>
 </div>`);
 
 // Bugs
 buildGrid('bugGrid', bugs, (b, i) => `
-<div class="bug-card reveal-up" style="animation-delay:${i*100}ms" data-bug="${b.id}">
-  <div class="bug-summary d-flex justify-content-between align-items-center" onclick="toggleBug(this)">
-    <div><h4 class="h6 fw-bold mb-1">${b.id} — ${b.title}</h4><div class="d-flex gap-2"><span class="badge bg-danger">${b.severity}</span><span class="badge bg-primary">${b.priority}</span><span class="badge bg-secondary">${b.status}</span></div></div>
-    <i class="fa-solid fa-chevron-down chevron text-white-75"></i>
-  </div>
-  <div class="bug-detail px-3 pb-3">
-    <div class="row g-2 text-sm">
-      <div class="col-md-6"><strong>Environment:</strong> ${b.env}</div>
-      <div class="col-12"><strong>Steps to Reproduce:</strong><br><pre class="small mb-1">${b.steps}</pre></div>
-      <div class="col-md-6"><strong>Expected:</strong> ${b.expected}</div>
-      <div class="col-md-6"><strong>Actual:</strong> ${b.actual}</div>
-    </div>
-  </div>
-</div>`);
+<div class="col-md-6 reveal-up" style="animation-delay:${i*100}ms"><article class="bug-card" data-bug="${b.id}">
+  <button class="bug-summary" type="button" aria-expanded="false" onclick="toggleBug(this)">
+    <span><span class="bug-id">${b.id}</span><h4 class="h6 fw-bold mb-1">${b.title}</h4><small>${b.env}</small></span><i class="fa-solid fa-chevron-down chevron"></i>
+  </button>
+  <div class="bug-detail"><div class="bug-detail-inner"><p><strong>What I do:</strong> ${b.actual}</p><p><strong>Goal:</strong> ${b.expected}</p><div class="bug-steps"><strong>Approach</strong><pre>${b.steps}</pre></div></div></div>
+</article></div>`);
 
 function toggleBug(el) {
   const card = el.closest('.bug-card');
   card.classList.toggle('open');
+  el.setAttribute('aria-expanded', card.classList.contains('open'));
 }
 
 // Skills
@@ -204,21 +187,7 @@ buildSkills();
 
 // Why
 buildGrid('whyGrid', whyPoints, (w, i) => `
-<div class="col-md-6 col-lg-4 reveal-up" style="animation-delay:${i*100}ms"><div class="why-card"><i class="fa-solid ${w.icon} fa-xl text-gradient mb-3"></i><h4 class="h6 fw-bold">${w.title}</h4><p class="small text-white-75 mb-0">${w.desc}</p></div></div>`);
-
-// Theme
-const themeBtn = document.getElementById('themeToggle');
-if (themeBtn) {
-  themeBtn.addEventListener('click', () => {
-    const html = document.documentElement;
-    const isDark = html.getAttribute('data-bs-theme') === 'dark';
-    html.setAttribute('data-bs-theme', isDark ? 'light' : 'dark');
-    themeBtn.innerHTML = isDark ? '<i class="fa-solid fa-moon"></i>' : '<i class="fa-solid fa-sun"></i>';
-    localStorage.setItem('theme', isDark ? 'light' : 'dark');
-  });
-  const saved = localStorage.getItem('theme');
-  if (saved) { document.documentElement.setAttribute('data-bs-theme', saved); themeBtn.innerHTML = saved === 'light' ? '<i class="fa-solid fa-sun"></i>' : '<i class="fa-solid fa-moon"></i>'; }
-}
+<div class="col-md-6 reveal-up" style="animation-delay:${i*80}ms"><div class="why-card h-100"><div class="why-icon"><i class="fa-solid ${w.icon}"></i></div><h4 class="h6 fw-bold">${w.title}</h4><p class="small text-white-75 mb-0">${w.desc}</p></div></div>`);
 
 // Form
 const form = document.getElementById('contactForm');
