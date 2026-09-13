@@ -592,7 +592,7 @@ function initSkillObserver() {
 }
 
 function initContactForms() {
-  const forms = ['contactForm', 'contactPageForm'];
+  const forms = ['contactPageForm'];
   forms.forEach(formId => {
     const form = document.getElementById(formId);
     if (!form) return;

@@ -1,0 +1,9 @@
+[build]
+  command = "echo 'Static site — no build step'"
+  publish = "."
+
+[[plugins]]
+  package = "netlify-plugin-lambda"
+
+[functions]
+  directory = "netlify/functions"
