@@ -15,11 +15,6 @@ exports.handler = async (event) => {
     return { statusCode: 405, body: JSON.stringify({ success: false, error: 'Method not allowed.' }) };
   }
 
-  if (!process.env.RESEND_API_KEY) {
-    console.error('RESEND_API_KEY is not configured.');
-    return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service is not configured.' }) };
-  }
-
   let formData;
   try {
     formData = JSON.parse(event.body || '{}');
@@ -34,6 +29,11 @@ exports.handler = async (event) => {
 
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
     return { statusCode: 400, body: JSON.stringify({ success: false, error: 'Please provide valid contact details.' }) };
+  }
+
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY is not configured.');
+    return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service is not configured.' }) };
   }
 
   try {
