@@ -7,13 +7,13 @@
 :root {
   --bg-dark: #080c17;
   --bg-darker: #04060c;
-  --bg-card: rgba(15, 23, 42, 0.82);
+  --bg-card: rgba(15, 23, 42, 0.85);
   --bg-card-hover: rgba(23, 33, 60, 0.95);
-  --bg-glass: rgba(255, 255, 255, 0.04);
-  --bg-glass-card: rgba(17, 26, 48, 0.72);
-  --border-glass: rgba(148, 163, 184, 0.12);
-  --border-hover: rgba(167, 139, 250, 0.45);
-  --border-focus: rgba(99, 102, 241, 0.6);
+  --bg-glass: rgba(255, 255, 255, 0.05);
+  --bg-glass-card: rgba(17, 26, 48, 0.82);
+  --border-glass: rgba(148, 163, 184, 0.16);
+  --border-hover: rgba(167, 139, 250, 0.55);
+  --border-focus: rgba(99, 102, 241, 0.65);
 
   --text-main: #f8fafc;
   --text-muted: #94a3b8;
@@ -33,13 +33,13 @@
   --gradient-emerald: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --gradient-amber: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
   --gradient-rose: linear-gradient(135deg, #f43f5e 0%, #e11d48 100%);
-  --gradient-card: linear-gradient(145deg, rgba(20, 29, 52, 0.85) 0%, rgba(12, 18, 34, 0.94) 100%);
+  --gradient-card: linear-gradient(145deg, rgba(20, 29, 52, 0.88) 0%, rgba(12, 18, 34, 0.96) 100%);
 
   --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.25);
   --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.38);
   --shadow-lg: 0 20px 50px rgba(0, 0, 0, 0.48);
-  --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.24);
-  --shadow-glow-cyan: 0 0 35px rgba(6, 182, 212, 0.22);
+  --shadow-glow: 0 0 35px rgba(99, 102, 241, 0.28);
+  --shadow-glow-cyan: 0 0 35px rgba(6, 182, 212, 0.24);
 
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
   --font-heading: 'Plus Jakarta Sans', 'Poppins', system-ui, sans-serif;
@@ -74,10 +74,10 @@ body {
   background-color: var(--bg-dark);
   color: var(--text-main);
   background-image: 
-    radial-gradient(circle at 12% 10%, rgba(99, 102, 241, 0.16) 0%, transparent 40%),
-    radial-gradient(circle at 88% 22%, rgba(168, 85, 247, 0.14) 0%, transparent 38%),
-    radial-gradient(circle at 50% 60%, rgba(6, 182, 212, 0.1) 0%, transparent 45%),
-    radial-gradient(circle at 80% 90%, rgba(99, 102, 241, 0.14) 0%, transparent 40%);
+    radial-gradient(circle at 12% 10%, rgba(99, 102, 241, 0.18) 0%, transparent 40%),
+    radial-gradient(circle at 88% 22%, rgba(168, 85, 247, 0.16) 0%, transparent 38%),
+    radial-gradient(circle at 50% 60%, rgba(6, 182, 212, 0.12) 0%, transparent 45%),
+    radial-gradient(circle at 80% 90%, rgba(99, 102, 241, 0.16) 0%, transparent 40%);
   background-attachment: fixed;
   overflow-x: hidden;
   line-height: 1.65;
@@ -117,7 +117,7 @@ a:hover { color: var(--accent-purple); }
 .tracking-wider { letter-spacing: 0.1em; }
 .tracking-widest { letter-spacing: 0.16em; }
 
-section { position: relative; padding: 6rem 0 !important; }
+section { position: relative; padding: 5.5rem 0 !important; }
 .section-header { max-width: 48rem; margin: 0 auto 3.5rem; }
 .section-tag {
   display: inline-flex;
@@ -129,13 +129,13 @@ section { position: relative; padding: 6rem 0 !important; }
   text-transform: uppercase;
   letter-spacing: 0.12em;
   border-radius: 999px;
-  background: rgba(99, 102, 241, 0.12);
-  border: 1px solid rgba(99, 102, 241, 0.35);
+  background: rgba(99, 102, 241, 0.15);
+  border: 1px solid rgba(99, 102, 241, 0.4);
   color: var(--primary-light);
   margin-bottom: 1rem;
 }
 
-/* 4. Glass Cards */
+/* 4. Glass Cards (Always Visible & Smooth Hover) */
 .glass-card, .card-custom {
   position: relative;
   background: var(--gradient-card);
@@ -149,6 +149,8 @@ section { position: relative; padding: 6rem 0 !important; }
               border-color 0.28s ease,
               background 0.28s ease;
   overflow: hidden;
+  opacity: 1 !important;
+  visibility: visible !important;
 }
 .glass-card:hover, .card-custom:hover {
   transform: translateY(-6px);
@@ -171,8 +173,8 @@ section { position: relative; padding: 6rem 0 !important; }
   transition: all 0.2s ease;
 }
 .badge-glass:hover {
-  background: rgba(99, 102, 241, 0.18);
-  border-color: rgba(99, 102, 241, 0.45);
+  background: rgba(99, 102, 241, 0.2);
+  border-color: rgba(99, 102, 241, 0.5);
   color: #ffffff;
 }
 
@@ -184,8 +186,8 @@ section { position: relative; padding: 6rem 0 !important; }
   border-radius: 999px;
   font-size: 0.82rem;
   font-weight: 600;
-  background: rgba(16, 185, 129, 0.14);
-  border: 1px solid rgba(16, 185, 129, 0.4);
+  background: rgba(16, 185, 129, 0.16);
+  border: 1px solid rgba(16, 185, 129, 0.45);
   color: #34d399;
 }
 .pulse-dot {
@@ -203,18 +205,18 @@ section { position: relative; padding: 6rem 0 !important; }
 
 /* 5. Navbar */
 .glass-nav {
-  background: rgba(8, 12, 23, 0.85);
+  background: rgba(8, 12, 23, 0.88);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(148, 163, 184, 0.12);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
   padding: 0.85rem 0;
   transition: all 0.3s ease;
   z-index: 1030;
 }
 .glass-nav.scrolled {
-  background: rgba(6, 9, 18, 0.96);
-  border-bottom-color: rgba(167, 139, 250, 0.25);
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.45);
+  background: rgba(6, 9, 18, 0.98);
+  border-bottom-color: rgba(167, 139, 250, 0.3);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
   padding: 0.6rem 0;
 }
 .navbar-brand {
@@ -247,7 +249,7 @@ section { position: relative; padding: 6rem 0 !important; }
 .nav-link i { font-size: 0.85rem; opacity: 0.75; transition: transform 0.2s ease, opacity 0.2s ease; }
 .nav-link:hover, .nav-link.active {
   color: #ffffff;
-  background: rgba(99, 102, 241, 0.16);
+  background: rgba(99, 102, 241, 0.18);
 }
 .nav-link:hover i, .nav-link.active i {
   opacity: 1;
@@ -271,7 +273,7 @@ section { position: relative; padding: 6rem 0 !important; }
   left: -5%;
   width: 550px;
   height: 550px;
-  background: radial-gradient(circle, rgba(99, 102, 241, 0.22) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99, 102, 241, 0.24) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(90px);
   z-index: 0;
@@ -284,7 +286,7 @@ section { position: relative; padding: 6rem 0 !important; }
   right: -5%;
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(168, 85, 247, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(168, 85, 247, 0.22) 0%, transparent 70%);
   border-radius: 50%;
   filter: blur(90px);
   z-index: 0;
@@ -327,7 +329,7 @@ section { position: relative; padding: 6rem 0 !important; }
   height: 100%;
   border-radius: 2rem;
   padding: 8px;
-  background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(168, 85, 247, 0.3), rgba(6, 182, 212, 0.5));
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.6), rgba(168, 85, 247, 0.35), rgba(6, 182, 212, 0.5));
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), var(--shadow-glow);
   position: relative;
   overflow: hidden;
@@ -340,9 +342,9 @@ section { position: relative; padding: 6rem 0 !important; }
 }
 .hero-floating-card {
   position: absolute;
-  background: rgba(15, 23, 42, 0.9);
+  background: rgba(15, 23, 42, 0.92);
   backdrop-filter: blur(16px);
-  border: 1px solid rgba(167, 139, 250, 0.32);
+  border: 1px solid rgba(167, 139, 250, 0.35);
   border-radius: 1rem;
   padding: 0.65rem 1rem;
   box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
@@ -963,18 +965,17 @@ section { position: relative; padding: 6rem 0 !important; }
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.35);
 }
 
-/* 19. Footer & Animations */
+/* 19. Footer & Safe Fallback Visibility */
 footer {
   border-top: 1px solid rgba(148, 163, 184, 0.1);
   background: rgba(4, 7, 15, 0.7);
   backdrop-filter: blur(10px);
 }
 .reveal-up {
-  opacity: 0;
-  transform: translateY(24px);
-  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
 }
-.reveal-up.active { opacity: 1; transform: translateY(0); }
 
 /* 20. Responsive */
 @media (max-width: 991.98px) {
