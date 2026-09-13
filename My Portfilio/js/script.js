@@ -616,8 +616,49 @@ function initContactForms() {
         return;
       }
 
-      showToast(`Thank you, ${nameInput.value.trim()}! Your message has been received. I will respond within 24 hours.`, 'success');
-      form.reset();
+      // All client-side validation passed — send via Netlify serverless function
+      const submitBtn = form.querySelector('button[type="submit"]');
+      const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Sending...';
+        submitBtn.setAttribute('aria-busy', 'true');
+      }
+
+      const allTextInputs = form.querySelectorAll('input[type="text"]');
+      const subjectInput = allTextInputs.length > 1 ? allTextInputs[1] : null;
+
+      const payload = {
+        name: nameInput.value.trim(),
+        email: emailInput.value.trim(),
+        subject: subjectInput ? subjectInput.value.trim() : '',
+        message: msgInput.value.trim(),
+      };
+
+      fetch('/.netlify/functions/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload),
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            showToast(`Thank you, ${payload.name}! Your message has been received. I will respond within 24 hours.`, 'success');
+            form.reset();
+          } else {
+            showToast(data.error || 'Something went wrong. Please try again.', 'warning');
+          }
+        })
+        .catch(() => {
+          showToast('Network error. Please check your connection and try again.', 'warning');
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.innerHTML = originalBtnHtml;
+            submitBtn.removeAttribute('aria-busy');
+          }
+        });
     });
   });
 }
