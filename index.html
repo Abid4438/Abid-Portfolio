@@ -48,9 +48,12 @@
         <li class="nav-item"><a class="nav-link" href="#bugs"><i class="fa-solid fa-bug"></i> Bug Reports</a></li>
         <li class="nav-item"><a class="nav-link" href="#resume"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
       </ul>
-      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0">
-        <a href="contact.html" class="btn btn-primary-glow rounded-pill px-4 py-2">
-          <i class="fa-solid fa-paper-plane me-2"></i>Hire Me
+      <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0 flex-wrap">
+        <a href="project-planner.html" class="btn btn-glass rounded-pill px-3 py-2 text-white">
+          <i class="fa-solid fa-clipboard-list me-1 text-primary-light"></i>Project Scope
+        </a>
+        <a href="contact.html" class="btn btn-primary-glow rounded-pill px-3 px-lg-4 py-2">
+          <i class="fa-solid fa-paper-plane me-1"></i>Hire Me
         </a>
       </div>
     </div>
@@ -62,8 +65,8 @@
   <div class="hero-blob"></div>
   <div class="hero-blob2"></div>
   <div class="container position-relative z-1">
-    <div class="row align-items-center gy-5">
-      <div class="col-lg-7 order-2 order-lg-1 reveal-up">
+    <div class="row align-items-center gy-4 gy-lg-5">
+      <div class="col-12 col-lg-7 reveal-up hero-content-col">
         <div class="mb-3">
           <span class="badge-status">
             <span class="pulse-dot"></span>
@@ -84,21 +87,21 @@
           <span class="badge-glass"><i class="fa-solid fa-bug text-warning me-1"></i> Defect Triage &amp; Reporting</span>
         </div>
 
-        <div class="d-flex flex-wrap gap-3 align-items-center">
-          <a href="contact.html" class="btn btn-primary-glow btn-lg rounded-pill px-4 py-3">
+        <div class="d-flex flex-wrap gap-2 gap-sm-3 align-items-center hero-cta-group">
+          <a href="contact.html" class="btn btn-primary-glow btn-lg rounded-pill px-4 py-3 hero-btn">
             <i class="fa-solid fa-envelope me-2"></i>Get In Touch
           </a>
-          <a href="#projects" class="btn btn-glass btn-lg rounded-pill px-4 py-3">
+          <a href="#projects" class="btn btn-glass btn-lg rounded-pill px-4 py-3 hero-btn">
             <i class="fa-solid fa-briefcase me-2"></i>Explore Work
           </a>
-          <a href="assets/Abid_Ali_QA_Resume.pdf" class="btn btn-glass btn-lg rounded-pill px-4 py-3" download>
+          <a href="assets/Abid_Ali_QA_Resume.pdf" class="btn btn-glass btn-lg rounded-pill px-4 py-3 hero-btn" download>
             <i class="fa-solid fa-download me-2"></i>Download CV
           </a>
         </div>
       </div>
 
-      <!-- Avatar Showcase Card -->
-      <div class="col-lg-5 order-1 order-lg-2 text-center reveal-up">
+      <!-- Avatar Showcase Card (Hidden on Mobile & Tablet, shown on Desktop) -->
+      <div class="col-lg-5 text-center reveal-up d-none d-lg-block hero-image-col">
         <div class="profile-showcase">
           <div class="hero-floating-card card-top-left">
             <div class="hero-floating-icon" style="background: var(--gradient-primary);">
@@ -128,21 +131,21 @@
     </div>
 
     <!-- Quick Stats Banner -->
-    <div class="stats-banner reveal-up mt-5">
-      <div class="row g-4 justify-content-center align-items-center">
-        <div class="col-6 col-md-3 stat-item">
+    <div class="stats-banner reveal-up mt-4 mt-lg-5">
+      <div class="row g-3 g-md-4 justify-content-center align-items-center">
+        <div class="col-6 col-lg-3 stat-item">
           <div class="stat-number text-gradient">3+</div>
           <div class="stat-label">Years QA &amp; Dev Experience</div>
         </div>
-        <div class="col-6 col-md-3 stat-item">
+        <div class="col-6 col-lg-3 stat-item">
           <div class="stat-number text-gradient-cyan">100+</div>
           <div class="stat-label">Reproducible Bugs Logged</div>
         </div>
-        <div class="col-6 col-md-3 stat-item">
+        <div class="col-6 col-lg-3 stat-item">
           <div class="stat-number text-gradient-emerald">4+</div>
           <div class="stat-label">Platforms Tested (POS, Web, Desktop, Mobile)</div>
         </div>
-        <div class="col-6 col-md-3 stat-item">
+        <div class="col-6 col-lg-3 stat-item">
           <div class="stat-number text-gradient">100%</div>
           <div class="stat-label">Test Case Execution Diligence</div>
         </div>
@@ -266,7 +269,9 @@
     <!-- Featured 6 Grid (Pre-rendered) -->
     <div class="row g-4" id="expertGrid">
       <!-- expertise cards loaded by js/script.js expertiseData -->
-      </div>
+    </div>
+  </div>
+</section>
 
 <!-- Tools & Technologies Section -->
 <section id="tools" aria-label="Tools and Technologies">

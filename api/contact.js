@@ -197,18 +197,12 @@ function buildBlueprintHtml(blueprint, name, email, subject) {
   `.trim();
 }
 
-exports.handler = async (event) => {
-  if (event.httpMethod !== 'POST') {
-    return { statusCode: 405, body: JSON.stringify({ success: false, error: 'Method not allowed.' }) };
+module.exports = async (req, res) => {
+  if (req.method !== 'POST') {
+    return res.status(405).json({ success: false, error: 'Method not allowed.' });
   }
 
-  let formData;
-  try {
-    formData = JSON.parse(event.body || '{}');
-  } catch {
-    return { statusCode: 400, body: JSON.stringify({ success: false, error: 'Invalid form data.' }) };
-  }
-
+  const formData = req.body || {};
   const name = String(formData.name || '').trim();
   const email = String(formData.email || '').trim();
   const subject = String(formData.subject || 'New portfolio enquiry').trim();
@@ -217,12 +211,12 @@ exports.handler = async (event) => {
   const blueprintData = formData.blueprint || null;
 
   if (!name || !message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return { statusCode: 400, body: JSON.stringify({ success: false, error: 'Please provide valid contact details.' }) };
+    return res.status(400).json({ success: false, error: 'Please provide valid contact details.' });
   }
 
   if (!process.env.RESEND_API_KEY) {
     console.error('RESEND_API_KEY is not configured.');
-    return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Email service is not configured.' }) };
+    return res.status(500).json({ success: false, error: 'Email service is not configured.' });
   }
 
   const emailHtml = isBlueprint && blueprintData
@@ -260,12 +254,12 @@ exports.handler = async (event) => {
 
     if (!resendResponse.ok) {
       console.error('Resend error:', await resendResponse.text());
-      return { statusCode: 502, body: JSON.stringify({ success: false, error: 'Unable to send your message right now.' }) };
+      return res.status(502).json({ success: false, error: 'Unable to send your message right now.' });
     }
 
-    return { statusCode: 200, body: JSON.stringify({ success: true }) };
+    return res.status(200).json({ success: true });
   } catch (error) {
     console.error('Contact form error:', error);
-    return { statusCode: 500, body: JSON.stringify({ success: false, error: 'Unable to send your message right now.' }) };
+    return res.status(500).json({ success: false, error: 'Unable to send your message right now.' });
   }
 };

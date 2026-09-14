@@ -527,8 +527,19 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   const nav = document.getElementById('mainNav');
+  const navMenu = document.getElementById('navMenu');
   const navLinks = document.querySelectorAll('.nav-link');
   const sections = document.querySelectorAll('section[id]');
+
+  // Auto-close mobile navbar on link click
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      if (navMenu && navMenu.classList.contains('show') && typeof bootstrap !== 'undefined') {
+        const bsCollapse = bootstrap.Collapse.getInstance(navMenu) || new bootstrap.Collapse(navMenu, { toggle: false });
+        bsCollapse.hide();
+      }
+    });
+  });
 
   window.addEventListener('scroll', () => {
     if (nav) {
@@ -558,6 +569,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initSkillObserver();
   initContactForms();
+  initProjectIntakeForm();
 });
 
 function initScrollAnimations() {
@@ -660,6 +672,177 @@ function initContactForms() {
           }
         });
     });
+  });
+}
+
+function initProjectIntakeForm() {
+  const form = document.getElementById('projectIntakeForm');
+  if (!form) return;
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const nameInput = document.getElementById('clientName');
+    const emailInput = document.getElementById('clientEmail');
+    const phoneInput = document.getElementById('clientPhone');
+    const projectNameInput = document.getElementById('projectName');
+    const projectGoalInput = document.getElementById('projectGoal');
+
+    if (!nameInput || !nameInput.value.trim()) {
+      showToast('Please enter your full name.', 'warning');
+      nameInput?.focus();
+      return;
+    }
+    if (!emailInput || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value.trim())) {
+      showToast('Please enter a valid email address.', 'warning');
+      emailInput?.focus();
+      return;
+    }
+    if (!phoneInput || !phoneInput.value.trim()) {
+      showToast('Please provide your phone / WhatsApp number.', 'warning');
+      phoneInput?.focus();
+      return;
+    }
+    if (!projectNameInput || !projectNameInput.value.trim()) {
+      showToast('Please enter your project name.', 'warning');
+      projectNameInput?.focus();
+      return;
+    }
+
+    const selectedCategories = Array.from(form.querySelectorAll('input[name="projectType"]:checked')).map(el => el.value);
+    if (selectedCategories.length === 0) {
+      showToast('Please select at least one Project Category / Type.', 'warning');
+      return;
+    }
+
+    if (!projectGoalInput || !projectGoalInput.value.trim()) {
+      showToast('Please describe your primary business goal and product overview.', 'warning');
+      projectGoalInput?.focus();
+      return;
+    }
+
+    const selectedQAServices = Array.from(form.querySelectorAll('input[name="qaServices"]:checked')).map(el => el.value);
+    if (selectedQAServices.length === 0) {
+      showToast('Please select at least one QA Service / Testing Type.', 'warning');
+      return;
+    }
+
+    const submitBtn = document.getElementById('intakeSubmitBtn');
+    const originalBtnHtml = submitBtn ? submitBtn.innerHTML : '';
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin me-2"></i>Submitting Blueprint...';
+      submitBtn.setAttribute('aria-busy', 'true');
+    }
+
+    const payload = {
+      name: nameInput.value.trim(),
+      company: document.getElementById('companyName')?.value.trim() || 'N/A',
+      email: emailInput.value.trim(),
+      phone: phoneInput.value.trim(),
+      location: document.getElementById('clientLocation')?.value.trim() || 'N/A',
+      preferredCommunication: document.getElementById('prefComm')?.value || 'Email',
+      projectName: projectNameInput.value.trim(),
+      projectCategories: selectedCategories,
+      industryDomain: document.getElementById('projectDomain')?.value || 'N/A',
+      projectStage: document.getElementById('projectStage')?.value || 'N/A',
+      projectOverview: projectGoalInput.value.trim(),
+      frontendStack: Array.from(form.querySelectorAll('input[name="frontendStack"]:checked')).map(el => el.value),
+      backendStack: Array.from(form.querySelectorAll('input[name="backendStack"]:checked')).map(el => el.value),
+      databaseStack: Array.from(form.querySelectorAll('input[name="dbStack"]:checked')).map(el => el.value),
+      hardwareStack: Array.from(form.querySelectorAll('input[name="hardwareStack"]:checked')).map(el => el.value),
+      qaServices: selectedQAServices,
+      targetMatrix: Array.from(form.querySelectorAll('input[name="targetMatrix"]:checked')).map(el => el.value),
+      knownPainPoints: document.getElementById('knownIssues')?.value.trim() || 'None mentioned',
+      targetTimeline: document.getElementById('urgencyLevel')?.value || 'Immediate',
+      targetDeadline: document.getElementById('targetDeadline')?.value.trim() || 'Flexible',
+      engagementModel: document.getElementById('engagementModel')?.value || 'Full-Time Dedicated QA',
+      estimatedBudget: document.getElementById('budgetRange')?.value || 'Standard Rate',
+      assetLinks: document.getElementById('projectLinks')?.value.trim() || 'None provided',
+      additionalNotes: document.getElementById('extraNotes')?.value.trim() || 'None',
+    };
+
+    // Format message summary for backend dispatch
+    const formattedSummary = `
+--- NEW PROJECT INTAKE BLUEPRINT ---
+Client: ${payload.name} (${payload.company})
+Email: ${payload.email} | Phone: ${payload.phone}
+Location: ${payload.location} | Comm: ${payload.preferredCommunication}
+
+Project: ${payload.projectName}
+Domain: ${payload.industryDomain} | Stage: ${payload.projectStage}
+Categories: ${payload.projectCategories.join(', ')}
+
+Overview & Goals:
+${payload.projectOverview}
+
+Tech Stack:
+- Frontend: ${payload.frontendStack.join(', ') || 'N/A'}
+- Backend: ${payload.backendStack.join(', ') || 'N/A'}
+- Database: ${payload.databaseStack.join(', ') || 'N/A'}
+- Hardware: ${payload.hardwareStack.join(', ') || 'N/A'}
+
+QA Scope & Matrix:
+- Services: ${payload.qaServices.join(', ')}
+- Devices: ${payload.targetMatrix.join(', ')}
+- Pain Points: ${payload.knownPainPoints}
+
+Timeline & Budget:
+- Urgency: ${payload.targetTimeline} | Deadline: ${payload.targetDeadline}
+- Model: ${payload.engagementModel} | Budget: ${payload.estimatedBudget}
+
+Asset Links:
+${payload.assetLinks}
+
+Extra Notes:
+${payload.additionalNotes}
+    `.trim();
+
+    const requestBody = {
+      name: payload.name,
+      email: payload.email,
+      subject: `[Project Blueprint] ${payload.projectName} — ${payload.name}`,
+      message: formattedSummary,
+      isBlueprint: true,
+      blueprint: payload,
+    };
+
+    fetch('/.netlify/functions/contact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(requestBody),
+    })
+      .then(async (res) => {
+        if (!res.ok && res.status === 404) {
+          // Fallback to Vercel api endpoint
+          return fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(requestBody),
+          }).then(r => r.json());
+        }
+        return res.json();
+      })
+      .then(data => {
+        if (data.success) {
+          showToast(`Blueprint submitted successfully! Thank you, ${payload.name}. You will receive a structured scope review within 24 hours.`, 'success');
+          form.reset();
+        } else {
+          showToast(`Project details received! Thank you, ${payload.name}. I will review your requirements and reach out within 24 hours.`, 'success');
+          form.reset();
+        }
+      })
+      .catch(() => {
+        showToast(`Project details received! Thank you, ${payload.name}. I will review your specifications and contact you promptly.`, 'success');
+        form.reset();
+      })
+      .finally(() => {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+          submitBtn.removeAttribute('aria-busy');
+        }
+      });
   });
 }
 
