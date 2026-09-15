@@ -164,7 +164,7 @@ const projectsData = [
     company: 'Arkhitech',
     location: 'Lahore, Pakistan',
     duration: 'Sep 2025 — Present',
-    summary: 'Spearheading end-to-end manual QA for enterprise POS systems (Foodnerd & Howmuch) and Fruitfull, a modern team-management web application.',
+    summary: 'Spearheading end-to-end manual QA for enterprise POS systems (Restaurant & Retail) and a modern team-management web application.',
     highlights: [
       'Executed full manual, functional, regression, sanity, exploratory and UAT test cycles across POS desktop, web and native mobile apps.',
       'Validated critical restaurant and retail POS workflows: inventory tracking, thermal printing, payment gateway flows, and offline sync.',
@@ -230,7 +230,7 @@ const bugTicketsData = [
     title: 'API Auth Token Expiration Resulting in Silent Cart Reset',
     severity: 'medium',
     severityLabel: 'Medium',
-    env: 'Fruitfull Web App / Chrome & Safari',
+    env: 'Web Application / Chrome & Safari',
     actual: 'When JWT access token expired during checkout form completion, submitting the form redirected to login and wiped user form state without warning.',
     expected: 'Silent refresh token should seamlessly renew session in background or preserve user draft cart state upon re-login.',
     steps: '1. Add items to cart and wait 15 minutes for token expiry.\n2. Click "Proceed to Checkout".\n3. Observe auth interceptor behavior.',
@@ -420,8 +420,8 @@ function populateBugTickets(containerId) {
 
   container.innerHTML = bugTicketsData.map((bug, idx) => `
     <div class="col-12 col-lg-4 reveal-up" style="animation-delay: ${idx * 90}ms">
-      <article class="bug-ticket-card ${idx === 0 ? 'open' : ''}" data-bug-id="${bug.id}">
-        <button class="bug-ticket-header" type="button" onclick="toggleBugTicket(this)" aria-expanded="${idx === 0 ? 'true' : 'false'}">
+      <article class="bug-ticket-card" data-bug-id="${bug.id}">
+        <button class="bug-ticket-header" type="button" onclick="toggleBugTicket(this)" aria-expanded="false">
           <div class="bug-header-left">
             <div class="bug-meta-row">
               <span class="bug-id-tag">${bug.id}</span>
@@ -570,6 +570,20 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillObserver();
   initContactForms();
   initProjectIntakeForm();
+
+  // Home page tag nav scroll
+  document.querySelectorAll('.tag-nav-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const target = btn.getAttribute('href');
+      if (target && target.startsWith('#')) {
+        const el = document.querySelector(target);
+        if (el) {
+          const navH = document.getElementById('mainNav')?.offsetHeight || 80;
+          window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - navH - 8, behavior: 'smooth' });
+        }
+      }
+    });
+  });
 });
 
 function initScrollAnimations() {
@@ -604,7 +618,7 @@ function initSkillObserver() {
 }
 
 function initContactForms() {
-  const forms = ['contactPageForm'];
+  const forms = ['contactPageForm', 'feedbackPageForm'];
   forms.forEach(formId => {
     const form = document.getElementById(formId);
     if (!form) return;
@@ -624,7 +638,7 @@ function initContactForms() {
         return;
       }
       if (!msgInput || !msgInput.value.trim()) {
-        showToast('Please enter your project message.', 'warning');
+        showToast(formId === 'feedbackPageForm' ? 'Please enter your feedback.' : 'Please enter your project message.', 'warning');
         return;
       }
 
@@ -640,10 +654,18 @@ function initContactForms() {
       const allTextInputs = form.querySelectorAll('input[type="text"]');
       const subjectInput = allTextInputs.length > 1 ? allTextInputs[1] : null;
 
+      // For feedback form, prepend the feedback type to the subject
+      let finalSubject = subjectInput ? subjectInput.value.trim() : '';
+      if (formId === 'feedbackPageForm') {
+        const fbTypeSelect = form.querySelector('select');
+        const fbType = fbTypeSelect ? fbTypeSelect.value : '';
+        finalSubject = fbType ? `[Feedback: ${fbType}] ${finalSubject}` : finalSubject;
+      }
+
       const payload = {
         name: nameInput.value.trim(),
         email: emailInput.value.trim(),
-        subject: subjectInput ? subjectInput.value.trim() : '',
+        subject: finalSubject,
         message: msgInput.value.trim(),
       };
 

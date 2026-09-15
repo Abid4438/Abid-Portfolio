@@ -256,11 +256,59 @@ section { position: relative; padding: 5.5rem 0 !important; }
   color: var(--primary-light);
   transform: translateY(-1px);
 }
+.nav-link:active {
+  transform: scale(0.94);
+  transition: transform 0.12s ease;
+}
+.nav-link:active i {
+  transform: scale(0.9) translateX(-1px);
+}
+
+/* 5b. Home Section Tag Navigation */
+.tag-nav-container {
+  position: sticky;
+  top: 76px;
+  z-index: 1020;
+  background: rgba(8, 12, 23, 0.92);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(148, 163, 184, 0.14);
+  padding: 0.65rem 0;
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.35);
+}
+.tag-nav-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  max-width: 100%;
+}
+.tag-nav-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.5rem 1.1rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(148, 163, 184, 0.16);
+  border-radius: 999px;
+  text-decoration: none;
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+.tag-nav-btn:hover {
+  color: #ffffff;
+  background: var(--gradient-primary);
+  border-color: transparent;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(99, 102, 241, 0.4);
+}
 
 /* 6. Hero */
 .hero-section {
   min-height: 100vh;
-  padding-top: 8rem !important;
+  padding-top: 9.5rem !important;
   padding-bottom: 5rem !important;
   display: flex;
   align-items: center;
@@ -1110,7 +1158,7 @@ img, svg, video, canvas, audio, iframe, embed, object {
 
   /* Hero Section adjustment when image module is hidden */
   .hero-section {
-    padding-top: 7rem !important;
+    padding-top: 8.5rem !important;
     padding-bottom: 3.5rem !important;
     min-height: auto;
   }
@@ -1333,7 +1381,7 @@ img, svg, video, canvas, audio, iframe, embed, object {
   }
 
   .hero-section {
-    padding-top: 6.25rem !important;
+    padding-top: 7.5rem !important;
     padding-bottom: 2.75rem !important;
   }
 

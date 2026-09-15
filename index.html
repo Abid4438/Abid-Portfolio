@@ -37,30 +37,39 @@
       <i class="fa-solid fa-bars-staggered fs-5"></i>
     </button>
     <div class="collapse navbar-collapse" id="navMenu">
-      <ul class="navbar-nav mx-auto align-items-lg-center gap-lg-1">
+<ul class="navbar-nav mx-auto align-items-lg-center gap-lg-1">
         <li class="nav-item"><a class="nav-link active" href="#home"><i class="fa-solid fa-house"></i> Home</a></li>
-        <li class="nav-item"><a class="nav-link" href="#about"><i class="fa-solid fa-user"></i> About</a></li>
-        <li class="nav-item"><a class="nav-link" href="#expertise"><i class="fa-solid fa-layer-group"></i> Expertise</a></li>
-        <li class="nav-item"><a class="nav-link" href="#tools"><i class="fa-solid fa-toolbox"></i> Tools</a></li>
-        <li class="nav-item"><a class="nav-link" href="#pos"><i class="fa-solid fa-cash-register"></i> POS QA</a></li>
-        <li class="nav-item"><a class="nav-link" href="#process"><i class="fa-solid fa-route"></i> Workflow</a></li>
-        <li class="nav-item"><a class="nav-link" href="#projects"><i class="fa-solid fa-folder-open"></i> Experience</a></li>
-        <li class="nav-item"><a class="nav-link" href="#bugs"><i class="fa-solid fa-bug"></i> Bug Reports</a></li>
-        <li class="nav-item"><a class="nav-link" href="#resume"><i class="fa-solid fa-file-pdf"></i> Resume</a></li>
+        <li class="nav-item"><a class="nav-link" href="expertise.html"><i class="fa-solid fa-layer-group"></i> Expertise</a></li>
+        <li class="nav-item"><a class="nav-link" href="feedback.html"><i class="fa-solid fa-comment-dots"></i> Feedback</a></li>
+        <li class="nav-item"><a class="nav-link" href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a></li>
+        <li class="nav-item"><a class="nav-link" href="project-planner.html"><i class="fa-solid fa-clipboard-list"></i> Project Scope</a></li>
       </ul>
       <div class="d-flex align-items-center gap-2 mt-3 mt-lg-0 flex-wrap">
-        <a href="project-planner.html" class="btn btn-glass rounded-pill px-3 py-2 text-white">
-          <i class="fa-solid fa-clipboard-list me-1 text-primary-light"></i>Project Scope
-        </a>
-        <a href="contact.html" class="btn btn-primary-glow rounded-pill px-3 px-lg-4 py-2">
-          <i class="fa-solid fa-paper-plane me-1"></i>Hire Me
-        </a>
+        <a href="contact.html" class="btn btn-primary-glow rounded-pill px-4 py-2"><i class="fa-solid fa-paper-plane me-2"></i>Hire Me</a>
+        <a href="feedback.html" class="btn btn-glass rounded-pill px-3 py-2"><i class="fa-solid fa-comment-dots me-2"></i>Feedback</a>
       </div>
     </div>
   </div>
 </nav>
 
-<!-- Hero Section -->
+<!-- Home Section Tags -->
+<div class="tag-nav-container" id="homeTags" aria-label="Home Section Tags">
+  <div class="container">
+    <div class="tag-nav-wrapper">
+      <a href="#about" class="tag-nav-btn">About</a>
+      <a href="#expertise" class="tag-nav-btn">Expertise</a>
+      <a href="#tools" class="tag-nav-btn">Tools</a>
+      <a href="#pos" class="tag-nav-btn">POS QA</a>
+      <a href="#process" class="tag-nav-btn">Workflow</a>
+      <a href="#projects" class="tag-nav-btn">Experience</a>
+      <a href="#bugs" class="tag-nav-btn">Bug Reports</a>
+      <a href="#skills" class="tag-nav-btn">Assessment</a>
+      <a href="#why" class="tag-nav-btn">Value</a>
+      <a href="#resume" class="tag-nav-btn">Resume</a>
+    </div>
+  </div>
+</div>
+
 <section id="home" class="hero-section" aria-label="Hero Section">
   <div class="hero-blob"></div>
   <div class="hero-blob2"></div>
@@ -212,7 +221,7 @@
               <i class="fa-solid fa-cash-register"></i>
             </div>
             <div>
-              <strong class="text-white d-block">Foodnerd &amp; Howmuch</strong>
+              <strong class="text-white d-block">Restaurant &amp; Retail POS</strong>
               <small class="text-muted">Enterprise Restaurant &amp; Retail POS systems</small>
             </div>
           </div>
@@ -222,7 +231,7 @@
               <i class="fa-solid fa-users"></i>
             </div>
             <div>
-              <strong class="text-white d-block">Fruitfull Web App</strong>
+              <strong class="text-white d-block">Web Application</strong>
               <small class="text-muted">Team collaboration &amp; task management web platform</small>
             </div>
           </div>
@@ -546,7 +555,7 @@
             <span class="project-date"><i class="fa-regular fa-calendar-days me-1"></i>Sep 2025 — Present</span>
           </div>
           <h3 class="text-white">Arkhitech</h3>
-          <p class="project-summary">Spearheading end-to-end manual QA for enterprise POS systems (Foodnerd &amp; Howmuch) and Fruitfull, a modern team-management web application.</p>
+          <p class="project-summary">Spearheading end-to-end manual QA for enterprise POS systems (Restaurant &amp; Retail) and a modern team-management web application.</p>
           <ul class="project-highlights">
             <li><i class="fa-solid fa-circle-check"></i><span>Executed full manual, functional, regression, sanity, exploratory and UAT test cycles across POS desktop, web and native mobile apps.</span></li>
             <li><i class="fa-solid fa-circle-check"></i><span>Validated critical restaurant and retail POS workflows: inventory tracking, thermal printing, payment gateway flows, and offline sync.</span></li>
@@ -634,8 +643,8 @@
     <!-- Bug Tickets Grid (Pre-rendered) -->
     <div class="row g-4" id="bugGrid">
       <div class="col-12 col-lg-4 reveal-up">
-        <article class="bug-ticket-card open" data-bug-id="BUG-104">
-          <button class="bug-ticket-header" type="button" onclick="toggleBugTicket(this)" aria-expanded="true">
+        <article class="bug-ticket-card" data-bug-id="BUG-104">
+          <button class="bug-ticket-header" type="button" onclick="toggleBugTicket(this)" aria-expanded="false">
             <div class="bug-header-left">
               <div class="bug-meta-row">
                 <span class="bug-id-tag">BUG-104</span>
@@ -718,7 +727,7 @@
                 <span class="severity-pill severity-medium">Medium</span>
               </div>
               <h4 class="bug-title-text">API Auth Token Expiration Resulting in Silent Cart Reset</h4>
-              <small class="text-muted"><i class="fa-solid fa-desktop me-1"></i>Fruitfull Web App / Chrome &amp; Safari</small>
+              <small class="text-muted"><i class="fa-solid fa-desktop me-1"></i>Web Application / Chrome &amp; Safari</small>
             </div>
             <div class="bug-chevron-icon"><i class="fa-solid fa-chevron-down"></i></div>
           </button>
@@ -946,7 +955,7 @@
               <div class="timeline-dot"></div>
               <div class="timeline-role">Software Test Engineer (QA)</div>
               <div class="timeline-company">Arkhitech, Lahore • Sep 2025 — Present</div>
-              <p class="timeline-desc">Leading QA for Foodnerd POS, Howmuch POS, and Fruitfull web platforms.</p>
+              <p class="timeline-desc">Leading QA for Enterprise POS systems (Restaurant &amp; Retail) and web platforms.</p>
             </li>
             <li class="timeline-item">
               <div class="timeline-dot"></div>
